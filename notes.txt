@@ -1,0 +1,130 @@
+ATTEMPT 1 TIMELINE:
+GEN 1 - random
+GEN 500 - runners keep their distance from chasers, and go out of their way to grab collectibles
+GEN 2500 - small signs chasers lunging at runners in short bursts. sometimes runners seem to try and dodge this
+GEN 5000 - chasers learn to sit still and barely ever move, hoping a runner will run into them. runners who attempt collectibles are weeded out by chasers that happen to spawn close to collectibles :/
+GEN 18000 - barely any change. chasers sit in the same spot. runners follow a predictable pattern. both rely completely on luck
+CONCLUSION: COMPLETE EVOLUTIONARY REGRESSION
+
+ATTEMPT 2 CHANGES:
+1. Chaser no longer gets points for being close to collectible unless runner is also close to it
+2. Chaser no longer gets points for extra time left over. Hopefully this will help it strategize
+3. Buffed points in the case of runner loss/chaser win
+ATTEMPT 2 TIMELINE:
+GEN 1 - random
+GEN 100 - chaser is still random, runner is showing signs of attempts are grabbing the collectibles and avoiding getting close to chaser
+Middle generations showed slight regression
+GEN 4000 - chaser moves on the same path the entire time. runner implements a zig-zag pattern that really efficiently grabs collectibles, though makes it very prone to running into chaser by the end
+GEN 8000 - no change
+CONCLUSION: runners showed growth except for not getting caught, chasers still need guidance all around
+
+ATTEMPT 3 CHANGES:
+1. Chasers arent rewarded as much for capturing runner
+2. Both have a slight penalty for warping (note, there is no way for them to tell they've warped. they also cannot see the distance from themselves to other items unless its the shortest distance.)
+ATTEMPT 3 TIMELINE:
+GEN 1 - random
+GEN 500 - both runner and chaser are too afraid to move. they vibrate in the same spot and avoid the penalty of warping. This was to be expected
+
+ATTEMPT 4 CHANGES:
+1. Got rid of threshhold for points relating to distance from other items. instead, made incremental points for total distance
+    - in the process of doing this i may have mathematically made the punishment really large (and possibly unfair) in certain scenarios. be advised
+2. Removed warping punishment
+3. Removed time and movement based inputs. both runner and chaser cannot tell time, their own direction, or the opposing entities direction
+4. AFTER Gen 11200, removed the need for the runner to be close to the collectible for the chaser to get points for also being close to it
+5. AFTER Gen 20000, heavily increased chaser punishment for not being close to runner and especially collectible. Removed chaser reward for capturing runner
+ATTEMPT 4 TIMELINE:
+GEN 1 - random
+GEN 50 - runner already showing signs of seeking out the collectible
+GEN 250 - runner grabs collectibles consistently unless chaser is too close. chaser moves with more purpose, but doesn't do much
+GEN 12000 - runner grabs collectibles efficiently still
+GEN 20000 - chasers guard collectibles a bit more, runners have to back off
+No major changes afterward
+
+ATTEMPT 5 CHANGES:
+1. In addition to mid-attempt 4 changes, changed negative fitness for distance into positive for chaser. hoping this will reduce the luck factor of randomly running into runner
+ATTEMPT 5 TIMELINE:
+GEN 1 - random
+GEN 30 - runner somewhat looks for collectible. chaser slows down when approaching collectible and speeds up when moving away from it
+GEN 50 - runner takes advantage of moments runner is furthest away from collectible. chaser doesn't allow much time
+GEN 100 - major jittering cycles start
+GEN 1250 - signs of chaser doing minor chases and lunging at runner
+GEN 4250 - chaser implements a primitive up/down movement but keeps distance with runner. seems to catch runner a lot more often
+GEN 6000 - chaser still mostly keeps to up/down movement, but now lunges after the runner early in the sim
+Overall, the jittering was still a huge issue and this attempt had to be interrupted
+
+ATTEMPT 6 CHANGES:
+1. Finally implemented torus distance inputs. dx and dy are cyclic using sin and cos, plus giving them the distance
+   - basically, turned dx and dy inputs into sin(dx), cos(dx), sin(dy), cos(dy), and overall distance
+   - praying this will stop the jittering for good
+2. Added back movement inputs
+ATTEMPT 6 TIMELINE:
+GEN 1 - random
+In between, nothing happens i haven't seen before
+GEN 6000 - runner becomes efficient at grabbing collectibles, and will avoid chaser while doing it too. chaser almost seems like its avoiding runner. likely just speculation
+   - It is apparent they are both extra jittery because of the movement inputs
+
+ATTEMPT 7 CHANGES:
+1. Removed movement inputs again
+2. Added back extra time reward for chaser and made it larger
+ATTEMPT 7 TIMELINE:
+GEN 1 - random
+GEN 10 - runner already showing signs of grabbing collectible and avoiding chaser. chaser slightly guarding collectible
+GEN 125 - begins this pattern where runner holds left and chaser guards collectible
+GEN 1000 - runner starts utilizing this path where it "wiggles" above the chaser and hypnotizes it and gets it to stop guarding the collectible
+GEN 4000 - runner becomes more efficient at grabbing collectibles. this strategy of staying above the chaser consistently keeps chaser from focusing on the main objective. it never shakes this habit
+
+ATTEMPT 8 CHANGES:
+1. No longer uses best all time score to determine whether top spot in generation can be taken over
+2. Runner only needs one collectible to win. sim ends once one collectible is collected and both are heavily rewarded/punished for winning
+3. Removed runner speed boost
+4. Added time back in as an input
+5. Added the ability to sit still as an output
+ATTEMPT 8 TIMELINE:
+GEN 1 - random
+GEN 10 - chaser finds benefits in sitting still near collectible. runner is moving cautiously
+GEN 50 - chaser moves a bit but stays close to collectible. it almost seems to find the path the runner is taking and finds the intersect. runner is moving in a predictable line
+GEN 100 - runner: "really bro?"    LATER    runner: "fts im out"
+GEN 2000 - here it may be possible the chaser has learned to get as close as possible to the runner without touching it because being close to the collectible offers more points
+GEN 50000 - LITERALLY every generation is the runner going straight for the collectible, the chaser sits on the collectible, the runner rams into the chaser. 
+
+ATTEMPT 9 CHANGES:
+1. lowered fitness benefit for chasers to be close to collectible
+2. raised fitness benefit for chasers to be close to runner
+3. raised extra time fitness benefit for chaser
+ATTEMPT 9 TIMELINE:
+GEN 1 - random
+GEN 20/50 - chaser and runner implement "get rich quick" schemes that usually results in fast sims
+GEN 200 - chaser shows signs of defending the collectible, though they both keep getting stuck in output loops
+GEN 5000 - runner follows the same line, chaser lines itself up with runner and waits for contact. generally predictable behavior
+The rest of the replays were lost due to a bug, but no noticable progress really occurred
+
+ATTEMPT 10 CHANGES:
+1. added the ability for heavy mutations to occur. this will hopefully reduce the use of local exploits/strategies in long term runs
+2. implemented a velocity/acceleration/inertia system. this will punish sporatic movements and create some sort of memory
+3. added friction in between frames
+4. added velocity inputs. though velocity has a different meaning now
+5. added per-frame fitness checks, so its not every second anymore
+6. per-frame fitness checks are based on past-current distance
+7. removed extra time buff
+8. added stalling penalty
+ATTEMPT 10 TIMELINE:
+GEN 1 - random
+GEN 25 - first hints of symbiosis point farming between runner and chaser
+GEN 50 - runner and chaser get as close as possible without touching, prioritizing the point farm
+Later gens showed some signs of "betreyal" where one entity got greedy and went for the win
+
+ATTEMPT 11 CHANGES:
+1. Removed a bug that allowed point farming
+   - entities would get points for getting closer/further from targets but would never be punished for reversing the distance, because the max() function was allowing a +0 instead of a punishment
+ATTEMPT 11 TIMELINE:
+
+
+
+
+IDEAS FOR OTHER CHANGES:
+1. remove time again
+2. remove ability to sit still
+3. give extra time bonus to runners
+4. give runners speed boost again
+5. make collectible too large to sit on top of
+6. apply incremental fitness over time instead of per second and per win/loss

@@ -1,0 +1,10 @@
+{
+    "simulations": 2588904,
+    "generations": 51776,
+    "chaser_wins": 1975644,
+    "runner_wins": 608690,
+    "draws": 4570,
+    "total_collectibles": 608690,
+    "chaser_best_score": 141.84752549355997,
+    "runner_best_score": 30.20114118466542
+}
